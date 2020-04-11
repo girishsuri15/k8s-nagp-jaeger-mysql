@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+ name: user
+ namespace: nagp
+ labels:
+  app: user
+spec:
+ replicas: 1
+ selector:
+  matchLabels:
+   app: userservice
+ template:
+  metadata:
+   labels:
+    app: userservice
+  spec:
+   containers:
+    - name: user
+      image: girishsuri/user:4
+      env:
+      - name: MYSQL_PASSWORD
+        valueFrom:
+         secretKeyRef:
+          name: mysql
+          key: password 
+      - name: Jaeger_Collector_Host
+        value: http://jaeger-collector.default.svc.cluster.local:14268/api/traces
+      - name: MYSQl_HOST
+        value: mysql.default.svc.cluster.local
+      ports:
+        - containerPort: 3000

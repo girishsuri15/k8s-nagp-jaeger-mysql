@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+ name: properties
+ namespace: nagp
+data:
+ appURL.json: | 
+    { 
+    "userURL": "http://userservice.nagp.svc.cluster.local",
+    "orderURL": "http://orderservice.nagp.svc.cluster.local"
+    }

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+ name: userservice
+ namespace: nagp
+spec:
+ type: ClusterIP
+ selector:
+  app: userservice
+ ports:
+ - port: 80
+   targetPort: 3000

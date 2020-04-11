@@ -1,0 +1,7 @@
+FROM node:13.11-slim
+WORKDIR /UserService
+COPY package.json /UserService
+RUN npm install
+COPY . /UserService
+CMD ["npm","start"]
+EXPOSE 3000

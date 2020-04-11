@@ -1,0 +1,19 @@
+{
+  "name": "userservice",
+  "version": "1.0.0",
+  "description": "user service return the user respect to the id",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "girish",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "jaeger-client": "^3.17.2",
+    "mysql": "^2.18.1"
+  }
+}

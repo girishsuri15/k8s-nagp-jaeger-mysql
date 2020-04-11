@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+ name: aggregator
+ namespace: nagp
+ labels:
+  app: aggregator
+spec:
+ replicas: 1
+ selector:
+  matchLabels:
+   app: aggregatorservice
+ template:
+  metadata:
+   labels:
+    app: aggregatorservice
+  spec:
+   containers:
+    - name: aggregator
+      image: girishsuri/aggregator:5
+      env:
+      - name: Jaeger_Collector_Host
+        value: http://jaeger-collector.default.svc.cluster.local:14268/api/traces
+      ports:
+      - containerPort: 3000
+      volumeMounts:
+        - name: aggregator
+          mountPath: /mnt
+   volumes:
+   - name: aggregator
+     configMap:
+      name: properties

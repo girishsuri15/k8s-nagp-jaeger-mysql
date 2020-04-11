@@ -1,0 +1,7 @@
+FROM node:13.11-slim
+WORKDIR /OrderService
+COPY package.json /OrderService
+RUN npm install
+COPY . /OrderService
+CMD ["npm","start"]
+EXPOSE 3000
